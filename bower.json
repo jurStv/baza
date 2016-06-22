@@ -1,0 +1,27 @@
+{
+  "name": "baza",
+  "description": "baza",
+  "main": "index.js",
+  "authors": [
+    "jur",
+    "kaz"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "jungle",
+    "baza"
+  ],
+  "homepage": "https://github.com/jurStv/baza",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "normalize-css": "^4.1.1"
+  }
+}

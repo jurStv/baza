@@ -23,7 +23,8 @@ var express = require('express')
     , pmongo = require('promised-mongo')
     , app = express()
     , port = process.env.PORT || 3000
-    , router = express.Router();
+    , router = express.Router()
+    , maxAge = 10 * 24 * 60 * 60 * 1000;
 
 var bd = pmongo('localhost/baza', ['visitors']);
 
@@ -52,7 +53,7 @@ app.use(function(req, res, next) {
   if(!req.cookies['baza']) {
     var id = uid.sync( 32 );
     req.cookies['baza'] = id;
-    res.cookie('baza',id , { maxAge: 900000, httpOnly: true });
+    res.cookie('baza',id , { maxAge: maxAge, httpOnly: true });
   }
   next();
 });

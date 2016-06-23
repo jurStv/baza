@@ -23,8 +23,8 @@ var express = require('express')
 var bd = pmongo('localhost/baza', ['visitors']);
 
 var measure_int = setInterval(function() {
-  bd.visitors.find({
-      query: {_id: '__BAZA__'}
+  bd.visitors.findOne({
+      _id: '__BAZA__'
   })
   .then(function(doc){
     measure.set(doc.track_id.length);

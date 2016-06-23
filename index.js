@@ -4,9 +4,14 @@ pmx.init({
 });
 
 var probe = pmx.probe();
-var measure = probe.metric({
+var measureUniq = probe.metric({
   name        : 'Unique visitors',
   unit        : 'visitors'
+});
+
+var measureTotal = probe.metric({
+  name        : 'Total views',
+  unit        : 'views'
 });
 
 var express = require('express')
@@ -23,15 +28,20 @@ var express = require('express')
 var bd = pmongo('localhost/baza', ['visitors']);
 
 var measure_int = setInterval(function() {
-  bd.visitors.findOne({
-      _id: '__BAZA__'
-  })
-  .then(function(doc){
-    measure.set(doc.ids.length);
-  })
-  .catch(function(e){
-    measure.set(-1)
-  })
+  bd.visitors.find().toArray()
+    .then(function(docs){
+      docs.forEach(function(doc){
+        if (doc._id === '__BAZA-TOTAL__') {
+          measureTotal.set(doc.total);
+        } else if (doc._id === '__BAZA__') {
+          measureUniq.set(doc.ids.length);
+        }
+      })
+    })
+    .catch(function(e){
+      measureTotal.set(-1)
+      measureUniq.set(-1)
+    })
 }, 2500);
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -44,6 +54,20 @@ app.use(function(req, res, next) {
     req.cookies['baza'] = id;
     res.cookie('baza',id , { maxAge: 900000, httpOnly: true });
   }
+  next();
+});
+
+app.use(function(req, res, next) {
+  bd.visitors.findAndModify({
+      query: {_id: '__BAZA-TOTAL__'},
+      update: {$inc: {total: 1}},
+      new: true,
+      upsert:true
+  })
+  .then(function(doc){
+  })
+  .catch(function(e){
+  })
   next();
 });
 

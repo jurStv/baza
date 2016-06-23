@@ -2,8 +2,8 @@ $(document).ready(function(){
   var video = $('#zzzzzz')
   var audio = $('#xxxxxx')
   var first = false
+
   video.on('canplaythrough', function(){
-    console.log(video.get(0).playbackRate)
     if (!first) {
       setTimeout(function(){
         video.get(0).play()
@@ -24,19 +24,12 @@ $(document).ready(function(){
       }, 2000);
       first = true
     }
-
   });
 
   function second_passed() {
     $('.clock').removeClass('is-off');
   }
   setTimeout(second_passed, 2000)
-
-  $('.switcher').on('click', function(e) {
-    e.preventDefault();
-    $('.screen').toggleClass('glitch');
-  });
-
 
   var target = moment().set({'year': 2016, 'month': 6, 'date': 2, 'hour': 22});
   setInterval( function() {

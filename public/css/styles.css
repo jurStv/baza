@@ -160,6 +160,16 @@ body {
   font-size: 78px;
   line-height: 1;
 }
+
+@media (max-width: 768px) {
+  .clock {
+    width: 360px;
+  }
+  .clock span {
+    font-size: 48px;
+  }
+}
+
 .clock.is-off {
   -webkit-animation: is-off 2s linear infinite !important;
           animation: is-off 2s linear infinite !important;

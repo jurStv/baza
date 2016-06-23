@@ -40,9 +40,9 @@ app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(cookieParser('baza2soon'));
 app.use(function(req, res, next) {
   if(!req.cookies['baza']) {
-    let id = uid.sync( 32 );
+    var id = uid.sync( 32 );
     req.cookies['baza'] = id;
-    res.cookie('baza', , { maxAge: 900000, httpOnly: true });
+    res.cookie('baza',id , { maxAge: 900000, httpOnly: true });
   }
   next();
 });

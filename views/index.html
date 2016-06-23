@@ -5,13 +5,38 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
   <!-- Libs-->
   <link rel="stylesheet" href="/lib/normalize-css/normalize.css" media="all"/>
+  <link rel="stylesheet" href="/lib/components-font-awesome/css/font-awesome.min.css" media="all"/>
+  <link rel="stylesheet" href="/lib/lightbox2/dist/css/lightbox.min.css" media="all"/>
   <!-- Custom styles-->
   <link rel="stylesheet" href="/css/styles.css" media="all"/>
   <!-- Libraries and Plugins-->
   <script src="/lib/jquery/dist/jquery.min.js" defer=""></script>
-  <!-- Custom scripts and Dll-->
+  <script src="/lib/lightbox2/dist/js/lightbox.min.js" defer=""></script>
+  <!-- Custom scripts -->
   <script src="/js/index.js" defer=""></script>
 </head>
 <body>
-  <h1>hello Johny</h1>
+  <div class="loading-modal" id="loading-modal">
+  </div>
+  <div class="overlay">
+    <a href="/img/afisha.jpg" data-lightbox="image-1" data-title="BAZA№2" class="image">
+      <img src="/img/afisha.jpg" alt="AFISHA" />
+    </a>
+    <a href="/img/map.jpg" data-lightbox="image-1" data-title="MAP">
+
+    </a>
+    <div class="screen glitch">
+      <div class="clock is-off"><span data-time="" class="time"></span></div>
+      <div class="figure"></div>
+      <div class="figure-mask"></div>
+    </div>
+  </div>
+  <div id="trailer" class="is_overlay">
+    <video id="zzzzzz" loop="loop" width="100%" height="auto">
+      <source src="/video/baza.mp4"></source>
+    </video>
+  </div>
+  <audio id="xxxxxx" loop="loop">
+   <source src="/audio/DJ_Trax-Inside_Out.mp3" />
+  </audio>
 </body>

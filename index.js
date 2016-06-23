@@ -17,5 +17,9 @@ router.get('/', function(req, res, next) {
 
 app.use('/', router);
 
+app.use(function(req, res, next) {
+  res.render('404.html');
+});
+
 app.listen(port);
 console.log('App running on port', port);

@@ -210,7 +210,7 @@ body {
   color: #fff;
   background: transparent;
   overflow: hidden;
-  width: 720px;
+  width: 560px;
   height: 128px;
   clip: rect(0, 900px, 0, 0);
 }

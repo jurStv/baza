@@ -1,3 +1,7 @@
+require('pmx').init({
+  http : true
+});
+
 var express = require('express')
     , morgan = require('morgan')
     , path = require('path')

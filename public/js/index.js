@@ -33,20 +33,11 @@ $(document).ready(function(){
   });
 
 
-  var _target = new Date(2016, 6, 2, 22);
-  var target = _target.getTime();
-
+  var target = moment().set({'year': 2016, 'month': 6, 'date': 2, 'hour': 22});
   setInterval( function() {
-    var now = Date.now();
-    var delta = target - now;
-    var YYY = new Date(2016, 6, 2, 22);
-    YYY.setTime(delta)
-    var days     = YYY.getDate();
-    var hours    = YYY.getHours();
-    var seconds  = YYY.getSeconds();
-    var minutes  = YYY.getMinutes();
-
-    var realTime = ( days < 10 ? '0' : '' ) + days + 'д ' + ( hours < 10 ? '0' : '' ) + hours + ' : ' + ( minutes < 10 ? '0' : '' ) + minutes + ' : ' + ( seconds < 10 ? '0' : '' ) + seconds
+    var now = moment();
+    var delta = target.diff(now, 'seconds');
+    var realTime = moment.duration(delta, "seconds").format("Dд HH : mm : ss");
 
     $('.time').html(realTime);
     $('.time').attr('data-time', realTime);

@@ -34,7 +34,7 @@ $(document).ready(function(){
   var target = moment().set({'year': 2016, 'month': 6, 'date': 2, 'hour': 22, 'minute': 0, 'second': 0});
   setInterval( function() {
     var delta = target.diff(moment(), 'seconds');
-    var realTime = moment.duration(delta, "seconds").format("D[д] H : m : s");
+    var realTime = moment.duration(delta, "seconds").format("D[д] HH : mm : ss");
 
     $('.time').html(realTime);
     $('.time').attr('data-time', realTime);

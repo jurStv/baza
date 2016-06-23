@@ -31,11 +31,11 @@ $(document).ready(function(){
   }
   setTimeout(second_passed, 2000)
 
-  var target = moment().set({'year': 2016, 'month': 6, 'date': 2, 'hour': 22});
+  var target = moment().set({'year': 2016, 'month': 6, 'date': 2, 'hour': 22, 'minute': 0, 'second': 0});
   setInterval( function() {
-    var now = moment();
-    var delta = target.diff(now, 'seconds');
-    var realTime = moment.duration(delta, "seconds").format("Dд HH : mm : ss");
+    var delta = target.diff(moment(), 'seconds');
+      console.log(delta)
+    var realTime = moment.duration(delta, "seconds").format("D[д] H : m : s");
 
     $('.time').html(realTime);
     $('.time').attr('data-time', realTime);

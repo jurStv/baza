@@ -7,7 +7,6 @@ $(document).ready(function(){
       video.get(0).playbackRate = 0.5;
       audio.get(0).volume = 0;
       var int = setInterval(function(){
-        console.log(audio.get(0).volume)
         try {
           audio.get(0).volume += 0.1
         } catch (e) {

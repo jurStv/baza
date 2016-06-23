@@ -4,10 +4,9 @@ pmx.init({
 });
 
 var probe = pmx.probe();
-var measure = probe.counter({
+var measure = probe.metric({
   name        : 'Unique visitors',
-  unit        : 'visitors',
-  measurement : 'mean'
+  unit        : 'visitors'
 });
 
 var express = require('express')
@@ -28,12 +27,12 @@ var measure_int = setInterval(function() {
       query: {_id: '__BAZA__'}
   })
   .then(function(doc){
-    measure.update(doc.track_id.length);
+    measure.set(doc.track_id.length);
   })
   .catch(function(e){
-    measure.update(-1)
+    measure.set(-1)
   })
-}, 3000);
+}, 2500);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(__dirname + '/public/img/favicon.ico'));

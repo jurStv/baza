@@ -31,7 +31,7 @@ var measure_int = setInterval(function() {
     measure.update(doc.track_id.length);
   })
   .catch(function(e){
-    measure.update(0)
+    measure.update(-1)
   })
 }, 3000);
 

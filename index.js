@@ -39,9 +39,9 @@ app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 app.use(cookieParser('baza2soon'));
 app.use(function(req, res, next) {
-  console.log(req.cookies['track_id'])
-  if(!req.cookies['track_id']) {
-    res.cookie('track_id', uid.sync( 32 ), { maxAge: 900000, httpOnly: true });
+  console.log(req.cookies['baza'])
+  if(!req.cookies['baza']) {
+    res.cookie('baza', uid.sync( 32 ), { maxAge: 900000, httpOnly: true });
   }
   next();
 });
@@ -49,7 +49,7 @@ app.use(function(req, res, next) {
 app.use(function(req, res, next) {
   bd.visitors.findAndModify({
       query: {_id: '__BAZA__'},
-      update: {$addToSet: {ids: req.cookies['track_id']}},
+      update: {$addToSet: {ids: req.cookies['baza']}},
       new: true,
       upsert:true
   })

@@ -7,11 +7,13 @@ $(document).ready(function(){
       video.get(0).playbackRate = 0.5;
       audio.get(0).volume = 0;
       var int = setInterval(function(){
-        if (audio.get(0).volume === 1) {
+        console.log(audio.get(0).volume)
+        try {
+          audio.get(0).volume += 0.1
+        } catch (e) {
+          audio.get(0).volume = 1;
           clearInterval(int)
-          return
         }
-        audio.get(0).volume += 0.1
       }, 200)
       audio.get(0).play()
       $('#loading-modal').animate({opacity: 0}, {duration: 700, complete: function(){

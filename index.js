@@ -27,7 +27,7 @@ var measure_int = setInterval(function() {
       _id: '__BAZA__'
   })
   .then(function(doc){
-    measure.set(doc.track_id.length);
+    measure.set(doc.ids.length);
   })
   .catch(function(e){
     measure.set(-1)

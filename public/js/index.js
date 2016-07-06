@@ -17,7 +17,7 @@ $(document).ready(function(){
             clearInterval(int)
           }
         }, 200)
-        audio.get(0).play()
+        // audio.get(0).play()
         $('#loading-modal').animate({opacity: 0}, {duration: 700, complete: function(){
           $('#loading-modal').hide();
         }});
